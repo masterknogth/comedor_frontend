@@ -1,0 +1,72 @@
+body{
+   background-color: #EEEEF8 !important;
+}
+
+.ns-show-pass{
+    position: relative;
+    right: 55px;
+    top: 132px;
+    font-size: 20px;
+}
+.ns-show-pass:hover{
+    cursor: pointer;
+}
+
+.text-size{
+    font-size: 12px;
+}
+
+.loader {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+}
+
+.loader:after {
+    content: "";
+    display: block;
+    width: 17px;
+    height: 17px;
+    margin-left: 7px;
+    border-radius: 50%;
+    border: 6px solid grey;
+    border-color: grey transparent grey transparent;
+    -webkit-animation: loader 1.2s linear infinite;
+    animation: loader 1.2s linear infinite;
+}
+
+@-webkit-keyframes loader {
+    0%{
+    transform: rotate(0deg);
+    }
+100% {
+    transform: rotate(360deg); }
+}
+
+@keyframes loader {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    } 
+}
+
+.image{
+    border: solid 2px grey;
+    width: 300px;
+    height: 320px;
+    border-radius: 5px;
+}
+
+.image-nav{
+    width: 30px;
+    height: 30px;
+}
+
+.table-width{
+    width: 90% !important;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+}
