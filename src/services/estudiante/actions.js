@@ -44,7 +44,7 @@ export async function guardarEstudiante({ commit, state}) {
 
 export async function actualizarEstudiante({ commit, state}, id) {
     
-    await $http.put(`/updateEstudiante/${id}`,state.selectedEstudiante)
+    await $http.post(`/updateEstudiante/${id}`,state.selectedEstudiante)
     .then((response) => {
         commit('setSuccess',response.data.data)
         setTimeout(() => {

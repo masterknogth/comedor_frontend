@@ -46,7 +46,7 @@ export async function guardarPersonal({ commit, state}) {
 export async function actualizarPersonal({ commit, state}, id) {
     
 
-    await $http.put(`/updatePersonal/${id}`,state.selectedPersonal)
+    await $http.post(`/updatePersonal/${id}`,state.selectedPersonal)
     .then((response) => {
         commit('setSuccess',response.data.data)
         setTimeout(() => {
