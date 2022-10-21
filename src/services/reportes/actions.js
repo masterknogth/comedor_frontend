@@ -20,6 +20,8 @@ export async function countReport({ commit, state}) {
     await $http.post('/countReport',state.filtro)
     .then((response) => {
         commit('setGrafica', response.data.data)
+        commit('setFecha', response.data.fecha)
+        
     })
     .catch((error) => {
         console.log(error.response.data.error)

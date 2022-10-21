@@ -24,11 +24,31 @@ export const defaultEstudiante = () => {
     }
 }
 
+export const defaultError = () => {
+    return {
+        cedula:[],
+        nombres: [],
+        apellidos: []
+
+    }
+    
+}
+
+export const defaultSuccess = () => {
+    return {
+        text:'',
+        show:false
+    }
+}
+
+
 
 export default {
     filtroEstudiante:defaultFiltro(),
     selectedEstudiante:defaultEstudiante(),
     estudiantes:[],
-    errorCedulaE:'',
-    successE:''
+    //errorCedulaE:'',
+    errorE:defaultError(),
+    
+    successE:defaultSuccess()
 }

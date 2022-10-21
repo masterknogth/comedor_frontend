@@ -67,22 +67,7 @@
                 this.graficar()
                 
         }, 
-        /*setup() {
-            const testData = {
-            labels: ['Estudiantes' , 'Administrativos', 'Obreros', 'Docentes', 'Total'],
-            datasets: [
-                {
-                    data: [50, 40, 60, 70, 5],
-                    //data: this.grafica,
-                    backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
-                    borderWidth: 1,
-					pointBorderColor: '#249EBF',
-                },
-            ],
-            };
 
-            return { testData };
-        },*/
         computed: {           
             ...mapState("auth", [
                 "selectedAuth"    
@@ -124,14 +109,14 @@
             },
 
             async limpiar(){
-                this.resetFiltro()
-                await this.countReport()
-                this.graficar()
+                this.resetFiltro();
+                await this.countReport();
+                this.graficar();
             },
 
             async buscar(){
-                await this.countReport()
-                this.graficar()
+                await this.countReport();
+                this.graficar();
             }
         }
 

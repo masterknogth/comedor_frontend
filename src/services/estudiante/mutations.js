@@ -1,4 +1,4 @@
-import {defaultEstudiante} from './states'
+import {defaultEstudiante,defaultError,defaultSuccess} from './states'
 
 export function resetSelectedEstudiante(state) {
     state.selectedEstudiante = defaultEstudiante()
@@ -25,11 +25,24 @@ export function firtPageEstudiante(state) {
 }
 
 export function setError(state, data) {   
-    state.errorCedulaE = data
+
+    state.errorE.cedula = data.cedula?data.cedula:'';
+    state.errorE.nombres = data.nombres?data.nombres:'';
+    state.errorE.apellidos = data.apellidos?data.apellidos:'';
+
+}
+export function setDefaultError(state, data) {  
+     
+    state.errorE = defaultError();
 }
 
-export function setSuccess(state, data) {   
-    state.successE = data
+export function setSuccess(state, {data,show}) {   
+    state.successE.text = data;
+    state.successE.show = show;
+}
+
+export function setDefaultSuccess(state) {   
+    state.successE = defaultSuccess();
 }
 
 export function setSelectedEstudiante(state, data){

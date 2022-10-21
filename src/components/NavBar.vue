@@ -108,6 +108,7 @@
                 localStorage.removeItem("loged");
                 localStorage.removeItem("user");
                 localStorage.removeItem("token");
+                localStorage.removeItem("inicio");
                 this.resetSelectedAuth();
                 this.setDetectLogout(true);
                 this.$router.replace('/login');  

@@ -31,7 +31,21 @@ export default {
     },
 
   created() {
-        
+      //expira sesion despues de 6horas
+      if(localStorage.getItem('inicio') != null){
+        const milisegundos = new Date();
+        let tiempoLogeado = milisegundos.getTime() - localStorage.getItem('inicio');
+  
+        if(tiempoLogeado > 21600000 ){
+        //if(tiempoLogeado > 30000 ){  
+            localStorage.removeItem("role");
+            localStorage.removeItem("loged");
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+            localStorage.removeItem("inicio");
+        }  
+      }
+      
       //detecta si se cerro sesion para recargar todas las paginas
       let bc = new BroadcastChannel('abc'); 
       bc.onmessage = function (ev) { 

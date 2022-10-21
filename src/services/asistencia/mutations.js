@@ -4,22 +4,22 @@ import {defaultAsistencia} from './states'
 
 // asigna los valores por defecto del estado selectedCodigo
 export function resetSelectedCodigo(state) {
-    state.selectedCodigo = defaultAsistencia()
+    state.selectedCodigo = defaultAsistencia();
 }
 
 export function setSelectedUser(state, data) {
-    state.selectedUser = data
+    state.selectedUser = data;
 }
 
 export function setSend(state, data) {
-    state.send = data
+    state.send = data;
 }
 
 export function setError(state, data) {
-    state.error = data
+    state.error = data;
 }
 export function setMessage(state, data) {
-    state.message = data
+    state.message = data;
 }
 
 export function setSelectedContador(state, data) {

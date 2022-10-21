@@ -54,6 +54,7 @@
                     <b-th >Apellidos</b-th>
                     <b-th >Departamento</b-th>  
                     <b-th >Tipo</b-th>
+                    <b-th >Usuario</b-th>
                     <b-th >Fecha</b-th>
                     <b-th >Hora</b-th>                       
                 </tr>
@@ -66,6 +67,7 @@
                     <b-td>{{reporte.apellidos}}</b-td>  
                     <b-td>{{reporte.departament?reporte.departament.name:''}}</b-td>
                     <b-td>{{reporte.tipo}}</b-td> 
+                    <b-td>{{reporte.user?reporte.user.user:''}}</b-td> 
                     <b-td>{{reporte.fecha}}</b-td> 
                     <b-td>{{reporte.hora}}</b-td>  
                 </b-tr>    
@@ -101,7 +103,7 @@ export default {
             if(this.selectedAuth.role != '1' ){
                 this.$router.replace('/');    
             }
-            await this.countReport()
+            //await this.countReport()
             await this.listarReportes()
            
     } ,  

@@ -2,6 +2,7 @@ import $http from './../../interceptors';
 
 
 export async function login({ commit, state}) {
+    
     commit('setErrorAuth',false)
     await $http.post('/login', state.ingreso)
     .then((response) => {
@@ -9,6 +10,10 @@ export async function login({ commit, state}) {
         localStorage.setItem('role', response.data.data.role_id);
         localStorage.setItem('loged', true);
         localStorage.setItem('user', response.data.data.user);
+
+        const milisegundos = new Date();
+        localStorage.setItem("inicio",milisegundos.getTime());
+
         let role = localStorage.getItem('role')
         let loged = localStorage.getItem('loged')
         let user = localStorage.getItem('user')

@@ -10,8 +10,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <br/>
-                    <label class="text-center text-danger">{{errorCedula }} {{errorCedulaE}}</label>
-                    <label class="text-center text-success">{{successP }} {{successE}} </label>
+                    <div class="alert text-center alert-success" v-if="successP.show">
+                       {{successP.text }}
+                    </div>
+                    <div class="alert text-center alert-success" v-if="successE.show">
+                       {{successE.text }}
+                    </div>
                     <div class="modal-body">
           
                         <div class="row">
@@ -22,24 +26,27 @@
                                 >
                                 <div v-if="selectedTipo.tipo == 'p'">
                                     <Field
-                                        class="form-control form-control-sm"                                                         
+                                        class="form-control form-control-sm "  
+                                        :class="[errorP.cedula[0]? 'is-invalid':'']"                                                       
                                         type="text"
-                                        name="cedula." 
-                                        rules="required|numeric"
+                                        name="cedula."                                  
                                         v-model="selectedPersonal.cedula"
                                     />
+                                    <label class="text-size text-danger">{{errorP.cedula[0]}}</label>
                                 </div> 
+                                
                                 <div v-else>
                                     <Field   
                                         class="form-control form-control-sm"                                                         
                                         type="text"
                                         name="cedula" 
-                                        rules="required|numeric"
+                                        :class="[errorE.cedula[0]? 'is-invalid':'']"
                                         v-model="selectedEstudiante.cedula"
                                     />
+                                    <label class="text-size text-danger">{{errorE.cedula[0]}}</label>   
                                 </div>                                          
-                                    <ErrorMessage class="text-danger text-size" name="cedula." />
-                                    <ErrorMessage class="text-danger text-size"  name="cedula" />                                      
+                                   
+                                                                    
                                 </b-form-group>
                             </div>
 
@@ -50,21 +57,22 @@
                                         class="form-control form-control-sm"                                                         
                                             type="text"
                                             name="nombres." 
-                                            rules="required"
+                                            :class="[errorP.nombres[0]? 'is-invalid':'']"
                                             v-model="selectedPersonal.nombres"
                                         />
+                                        <label class="text-size text-danger">{{errorP.nombres[0]}}</label>
                                     </div> 
                                     <div v-else>
                                         <Field   
                                         class="form-control form-control-sm"                                                         
                                             type="text"
-                                            name="nombres" 
-                                            rules="required"
+                                            name="nombres"                                   
                                             v-model="selectedEstudiante.nombres"
+                                            :class="[errorE.nombres[0]? 'is-invalid':'']"
                                         />
+                                        <label class="text-size text-danger">{{errorE.nombres[0]}}</label> 
                                     </div>                                          
-                                    <ErrorMessage class="text-danger text-size" name="nombres." />
-                                    <ErrorMessage class="text-danger text-size" name="nombres" /> 
+                               
                                 </b-form-group>
                             </div>
                                 <div class="col-md-4">
@@ -73,22 +81,23 @@
                                         <Field
                                         class="form-control form-control-sm"                                                         
                                             type="text"
-                                            name="apellidos." 
-                                            rules="required"
+                                            name="apellidos."                           
                                             v-model="selectedPersonal.apellidos"
+                                            :class="[errorP.apellidos[0]? 'is-invalid':'']"
                                         />
+                                        <label class="text-size text-danger">{{errorP.apellidos[0]}}</label>
                                     </div> 
                                     <div v-else>
                                         <Field   
                                         class="form-control form-control-sm"                                                         
                                             type="text"
-                                            name="apellidos" 
-                                            rules="required"
+                                            name="apellidos"    
                                             v-model="selectedEstudiante.apellidos"
+                                            :class="[errorE.apellidos[0]? 'is-invalid':'']"
                                         />
+                                        <label class="text-size text-danger">{{errorE.apellidos[0]}}</label>
                                     </div>                                          
-                                    <ErrorMessage class="text-danger text-size" name="apellidos." />
-                                    <ErrorMessage class="text-danger text-size" name="apellidos" />
+                           
                                 </b-form-group>
                             </div>
                             
@@ -101,16 +110,17 @@
                                             as="select"
                                             class="form-control form-control-sm"                                                         
                                             type="text"
-                                            name="tipo" 
-                                            rules="required"
+                                            name="tipo"                                    
                                             v-model="selectedPersonal.tipo"
+                                            :class="[errorP.tipo[0]? 'is-invalid':'']"
                                         >
                                         <option value="A">Administrativo</option>
                                         <option value="D">Docente</option>
                                         <option value="O">Obrero</option>
                                         </Field>
+                                        <label class="text-size text-danger">{{errorP.tipo[0]}}</label>
                                     </div>                                         
-                                    <ErrorMessage class="text-danger text-size" name="tipo" />
+                                   
                                 </b-form-group>
                             </div>
                             <div class="col-md-4">
@@ -202,13 +212,13 @@
             ]),
             ...mapState("personal", [
                 "selectedPersonal",
-                "errorCedula",
+                "errorP",
                 "successP"
             ]),
             
             ...mapState("estudiantes", [
                 "selectedEstudiante",
-                "errorCedulaE",
+                "errorE",
                 "successE"       
             ]),
         },
@@ -236,8 +246,7 @@
             async enviar(){
              
                 if(this.selectedTipo.tipo == 'p'){
-                    if(this.edit){
-                       
+                    if(this.edit){               
                         await this.actualizarPersonal(this.id);
                         await this.listarPersonal();
                     }else{

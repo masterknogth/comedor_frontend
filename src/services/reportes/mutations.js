@@ -14,6 +14,9 @@ export function setReportes(state,data) {
 export function setGrafica(state,data) {  
     state.grafica = data   
 }
+export function setFecha(state,data) {  
+    state.filtro.fecha = data   
+}
 
 //Cambia de pagina
 export function setPage(state, page) {   

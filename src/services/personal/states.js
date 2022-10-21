@@ -24,12 +24,29 @@ export const defaultPersonal = () => {
     }
 }
 
+export const defaultError = () => {
+    return {
+        cedula:[],
+        nombres: [],
+        apellidos: [],
+        tipo: []
+    }
+    
+}
+export const defaultSuccess = () => {
+    return {
+        text:'',
+        show:false
+    }
+}
+
+
 
 export default {
     filtro:defaultFiltro(),
     selectedPersonal:defaultPersonal(),
     personal:[],
-    errorCedula:'',
-    successP:'',
+    errorP:defaultError(),
+    successP:defaultSuccess(),
     fotosP:''
 }

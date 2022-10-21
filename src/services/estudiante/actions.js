@@ -26,37 +26,44 @@ export function setPerPagePaginationEstudiante({ commit, dispatch}, perPage) {
 
 export async function guardarEstudiante({ commit, state}) {
     
-  
+    commit('setDefaultError')
+    commit('setDefaultSuccess')
     await $http.post('/storeEstudiante',state.selectedEstudiante)
     .then((response) => {
+       
         commit('resetSelectedEstudiante')
+        commit('setSuccess',{data:response.data.data, show:true})
+        setTimeout(() => {
+            commit('setDefaultSuccess')
+        },3000)
     })
     .catch((error) => {
-        console.log(error.response.data.error.cedula[0])
         
-        commit('setError',error.response.data.error.cedula[0])
-        setTimeout(() => {
-            commit('setError',"")
-        },5000)
+        commit('setError',error.response.data.error)
+        /*setTimeout(() => {
+            commit('setDefaultError')
+        },3000)*/
         
     })
 }
 
 export async function actualizarEstudiante({ commit, state}, id) {
+    commit('setDefaultError')
+    commit('setDefaultSuccess')
     
     await $http.post(`/updateEstudiante/${id}`,state.selectedEstudiante)
     .then((response) => {
-        commit('setSuccess',response.data.data)
+        commit('setSuccess',{data:response.data.data, show:true})
         setTimeout(() => {
-            commit('setSuccess',"")
-        },5000)
+            commit('setDefaultSuccess')
+        },3000)
     })
     .catch((error) => {
-        
-        commit('setError',error.response.data.error.cedula[0])
-        setTimeout(() => {
-            commit('setError',"")
-        },5000)
+        commit('setError',error.response.data.error)
+        /*setTimeout(() => {
+            commit('setDefaultError')
+        },3000)*/
+       
     })
 }
 

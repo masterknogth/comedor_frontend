@@ -8,7 +8,9 @@ export async function readCarnet({ commit, state}) {
         
         commit('setSelectedUser', response.data.data)  
         commit('setError', response.data.error) 
-        commit('setMessage', response.data.message)   
+        commit('setMessage', response.data.message)
+        commit('resetSelectedCodigo')   
+        
     })
     .catch((error) => {
         /*commit('setErrorAuth',true)

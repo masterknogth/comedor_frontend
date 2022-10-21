@@ -27,38 +27,43 @@ export function setPerPagePagination({ commit, dispatch}, perPage) {
 
 export async function guardarPersonal({ commit, state}) {
     
-  
+    commit('setDefaultError')
+    commit('setDefaultSuccess')
     await $http.post('/storePersonal',state.selectedPersonal)
     .then((response) => {
         commit('resetSelectedPersonal')
+        commit('setSuccess',{data:response.data.data, show:true})
+        setTimeout(() => {
+            commit('setDefaultSuccess')
+        },3000)
     })
     .catch((error) => {
         
-        
-        commit('setError',error.response.data.error.cedula[0])
+        commit('setErrorP',error.response.data.error)
+        /*setTimeout(() => {
+            commit('setDefaultError')
+        },3000)*/
        
-        setTimeout(() => {
-            commit('setError',"")
-        },5000)
     })
 }
 
 export async function actualizarPersonal({ commit, state}, id) {
     
-
+    commit('setDefaultError')
+    commit('setDefaultSuccess')
     await $http.post(`/updatePersonal/${id}`,state.selectedPersonal)
     .then((response) => {
-        commit('setSuccess',response.data.data)
+        commit('setSuccess',{data:response.data.data, show:true})
         setTimeout(() => {
-            commit('setSuccess',"")
-        },5000)
+            commit('setDefaultSuccess')
+        },3000)
     })
     .catch((error) => {
         
-        commit('setError',error.response.data.error.cedula[0])
-        setTimeout(() => {
-            commit('setError',"")
-        },5000)
+        commit('setErrorP',error.response.data.error)
+        /*setTimeout(() => {
+            commit('setDefaultError')
+        },3000)*/
        
     })
 }

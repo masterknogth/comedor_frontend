@@ -7,7 +7,8 @@
                 <b-card bg-variant="dar">  
                     
                     <div class="col-lg-12">                  
-                        <Form @submit="enviar">    
+                        <Form @submit="enviar">  
+                            <br/>  
                             <div class="row">                           
                                 <div class="col-lg-12">
                                     <div class="row">
@@ -19,13 +20,13 @@
                             </div>
                                                         
                             <br/>
-                            <div class="row">
+                            <!--<div class="row">
                                 <div >
                                     <b-button type="submit" variant="primary" size="md">
                                         Enviar                                   
                                     </b-button>                               
                                 </div>                    
-                            </div>                    
+                            </div>  -->                  
                         </Form>
                     </div> 
                 
@@ -157,6 +158,7 @@
             async enviar(){
                 await this.readCarnet();
                 this.setSend(true);
+                
                 if(this.error){
                     Swal.fire({
                         customClass: {
@@ -172,6 +174,10 @@
                            this.setSend(false);
                         }                       
                     });
+                }else{
+                    setTimeout(() => {
+                        this.setSend(false);
+                    },2000)
                 }
                 
                 

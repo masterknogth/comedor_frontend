@@ -131,6 +131,7 @@
                     </b-tr>    
                 </b-tbody>
             </b-table-simple>
+            <p v-if="!personal.data" class="text-center">No hay información para mostrar</p>
             
         </div>
         <div v-if="selectedTipo.tipo =='e' ">
@@ -212,6 +213,7 @@
                     </b-tr>    
                 </b-tbody>
             </b-table-simple>
+            <p v-if="!estudiantes.data" class="text-center">No hay información para mostrar</p>
         </div>
         <b-modal id="modal-1"  size="xs" ok-variant="danger" cancel-title="No" ok-title="Si" @ok="cargarDatos" > 
             <p class="text-center">
