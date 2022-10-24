@@ -4,16 +4,16 @@
             <div class="col-md-4">
             </div>
             <div class="col-md-4">    
-                <b-card bg-variant="dar">  
+                <!--<b-card bg-variant="dar" :class="[templates.bg]">  -->
                     
                     <div class="col-lg-12">                  
-                        <Form @submit="enviar">  
+                        <Form @submit="enviar" class="formulario">  
                             <br/>  
                             <div class="row">                           
                                 <div class="col-lg-12">
                                     <div class="row">
                                         <div class="col-lg-12 d-flex">
-                                            <Field type="text" name="user" v-model="selectedCodigo.codigo" rules="required"  class="form-control form-control-sm"  />		
+                                            <Field type="text" id="aa" ref="aa" name="user" v-model="selectedCodigo.codigo" rules="required"  class="form-control form-control-sm"  />		
                                         </div>     
                                     </div>                        
                                 </div>                                                             
@@ -30,7 +30,7 @@
                         </Form>
                     </div> 
                 
-                </b-card>
+               <!-- </b-card>-->
                 
             </div>
             <div class="col-md-4">
@@ -41,24 +41,24 @@
             <div class="col-md-4">
                 <div class="col-md-12">
                     
-                    <b-table-simple responsive striped hover >
+                    <b-table-simple responsive striped hover :class="[templates.bg]">
                         <b-thead>
                             <tr>     
-                                <b-th >E</b-th>
-                                <b-th >O</b-th>               
-                                <b-th >A</b-th>
-                                <b-th >D</b-th> 
-                                <b-th >Total</b-th>                       
+                                <b-th :class="[templates.text]">E</b-th>
+                                <b-th :class="[templates.text]">O</b-th>               
+                                <b-th :class="[templates.text]">A</b-th>
+                                <b-th :class="[templates.text]">D</b-th> 
+                                <b-th :class="[templates.text]">Total</b-th>                       
                             </tr>
                         </b-thead>
                         <b-tbody>
                             <b-tr >     
                                         
-                                <b-td>{{selectedContador.estudiante}}</b-td>  
-                                <b-td>{{selectedContador.obrero}}</b-td>  
-                                <b-td>{{selectedContador.administrativo}}</b-td>  
-                                <b-td>{{selectedContador.docente}}</b-td> 
-                                <b-td>{{selectedContador.total}}</b-td>  
+                                <b-td :class="[templates.text]">{{selectedContador.estudiante}}</b-td>  
+                                <b-td :class="[templates.text]">{{selectedContador.obrero}}</b-td>  
+                                <b-td :class="[templates.text]">{{selectedContador.administrativo}}</b-td>  
+                                <b-td :class="[templates.text]">{{selectedContador.docente}}</b-td> 
+                                <b-td :class="[templates.text]">{{selectedContador.total}}</b-td>  
                             </b-tr>    
                         </b-tbody>
                     </b-table-simple>
@@ -141,6 +141,9 @@
                 "error",
                 "message" 
             ]),
+            ...mapState("configuration", [
+                "templates"    
+            ]),
         },
 
         methods: {
@@ -171,12 +174,17 @@
                     
                     }).then((result) => {
                         if (result.isConfirmed) {
+                            
                            this.setSend(false);
+                           /*const elem = document.getElementById('aa');
+                           console.log(elem.value)*/
+                           this.$refs.aa.focus();
                         }                       
                     });
                 }else{
                     setTimeout(() => {
                         this.setSend(false);
+                       
                     },2000)
                 }
                 

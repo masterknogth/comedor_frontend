@@ -21,7 +21,7 @@
                            rules="ext:xls,xlsx|required"
                         />
                        
-                        <button :disabled="disabled" data-bs-toggle="modal" data-bs-target="#confirm" class="btn btn-outline-primary" type="button" id="button-addon2">
+                        <button :disabled="disabled" data-bs-toggle="modal" data-bs-target="#confirm" class="btn btn-primary" type="button" id="button-addon2">
                             Cargar
                              <span class="loader" v-if="loading"></span>
                         </button>
@@ -30,8 +30,8 @@
                 
                     <div>
                         <b-form-group>
-                            <b-form-checkbox v-model="selectedTipo.tipo" @change="tipo" :aria-describedby="ariaDescribedby" name="some-radios" value="p" unchecked-value="e">Personal</b-form-checkbox>
-                            <b-form-checkbox v-model="selectedTipo.tipo" @change="tipo" :aria-describedby="ariaDescribedby" name="some-radios" value="e" unchecked-value="p">Estudiantes</b-form-checkbox>                         
+                            <b-form-checkbox v-model="selectedTipo.tipo" @change="tipo" :aria-describedby="ariaDescribedby" name="some-radios" value="p" unchecked-value="e" ><span :class="[templates.text]">Personal</span></b-form-checkbox>
+                            <b-form-checkbox v-model="selectedTipo.tipo" @change="tipo" :aria-describedby="ariaDescribedby" name="some-radios" value="e" unchecked-value="p" ><span :class="[templates.text]">Estudiantes</span></b-form-checkbox>                         
                         </b-form-group>
                     </div>
                 </Form>
@@ -90,24 +90,24 @@
                 </b-row>
                 
             </div>
-            <b-table-simple responsive striped hover  >
+            <b-table-simple responsive striped hover  :class="[templates.bg]">
                 <b-thead>
                     <tr>     
-                        <b-th >Numero</b-th>
-                        <b-th >Cedula</b-th>
-                        <b-th >Nombres</b-th>               
-                        <b-th >Apellidos</b-th>
-                        <b-th >Departamento</b-th>
-                        <b-th >Acciones</b-th>                       
+                        <b-th :class="[templates.text]">Numero</b-th>
+                        <b-th :class="[templates.text]">Cedula</b-th>
+                        <b-th :class="[templates.text]">Nombres</b-th>               
+                        <b-th :class="[templates.text]">Apellidos</b-th>
+                        <b-th :class="[templates.text]">Departamento</b-th>
+                        <b-th :class="[templates.text]">Acciones</b-th>                       
                     </tr>
                 </b-thead>
                 <b-tbody>
                     <b-tr v-for="personal in personal.data" :key="personal.id">     
-                        <b-td>{{personal.numero}}</b-td>              
-                        <b-td>{{personal.cedula}}</b-td>  
-                        <b-td>{{personal.nombres}}</b-td>  
-                        <b-td>{{personal.apellidos}}</b-td>  
-                        <b-td>{{personal.departament?personal.departament.name:''}}</b-td>  
+                        <b-td :class="[templates.text]">{{personal.numero}}</b-td>              
+                        <b-td :class="[templates.text]">{{personal.cedula}}</b-td>  
+                        <b-td :class="[templates.text]">{{personal.nombres}}</b-td>  
+                        <b-td :class="[templates.text]">{{personal.apellidos}}</b-td>  
+                        <b-td :class="[templates.text]">{{personal.departament?personal.departament.name:''}}</b-td>  
                         <b-td>
                             <b-button 
                                 data-bs-toggle="modal"
@@ -131,7 +131,7 @@
                     </b-tr>    
                 </b-tbody>
             </b-table-simple>
-            <p v-if="!personal.data" class="text-center">No hay información para mostrar</p>
+            <p v-if="!personal.data" class="text-center" :class="[templates.text]">No hay información para mostrar</p>
             
         </div>
         <div v-if="selectedTipo.tipo =='e' ">
@@ -172,23 +172,23 @@
                 </b-row>
                 
             </div>
-            <b-table-simple responsive striped hover >
+            <b-table-simple responsive striped hover :class="[templates.bg]">
                 <b-thead>
                     <tr>     
-                        <b-th >Cedula</b-th>
-                        <b-th >Nombres</b-th>               
-                        <b-th >Apellidos</b-th>
-                        <b-th >Departamento</b-th>  
-                        <b-th >Acciones</b-th>                       
+                        <b-th :class="[templates.text]">Cedula</b-th>
+                        <b-th :class="[templates.text]">Nombres</b-th>               
+                        <b-th :class="[templates.text]">Apellidos</b-th>
+                        <b-th :class="[templates.text]">Departamento</b-th>  
+                        <b-th :class="[templates.text]">Acciones</b-th>                       
                     </tr>
                 </b-thead>
                 <b-tbody>
                     <b-tr v-for="estudiante in estudiantes.data" :key="estudiante.id">     
                                   
-                        <b-td>{{estudiante.cedula}}</b-td>  
-                        <b-td>{{estudiante.nombres}}</b-td>  
-                        <b-td>{{estudiante.apellidos}}</b-td>  
-                        <b-td>{{estudiante.departament?estudiante.departament.name:''}}</b-td>  
+                        <b-td :class="[templates.text]">{{estudiante.cedula}}</b-td>  
+                        <b-td :class="[templates.text]">{{estudiante.nombres}}</b-td>  
+                        <b-td :class="[templates.text]">{{estudiante.apellidos}}</b-td>  
+                        <b-td :class="[templates.text]">{{estudiante.departament?estudiante.departament.name:''}}</b-td>  
                         <b-td>
                             <b-button
                                 @click="setEdit(true, estudiante, estudiante.id)"
@@ -212,8 +212,10 @@
                         </b-td>
                     </b-tr>    
                 </b-tbody>
+                
             </b-table-simple>
-            <p v-if="!estudiantes.data" class="text-center">No hay información para mostrar</p>
+
+            <p v-if="!estudiantes.data" class="text-center" :class="[templates.text]">No hay información para mostrar</p>
         </div>
         <b-modal id="modal-1"  size="xs" ok-variant="danger" cancel-title="No" ok-title="Si" @ok="cargarDatos" > 
             <p class="text-center">
@@ -357,6 +359,10 @@
             ...mapState("estudiantes", [
                 "estudiantes",
                 "filtroEstudiante"
+            ]),
+
+            ...mapState("configuration", [
+                "templates"
             ]),
         },
         methods:{

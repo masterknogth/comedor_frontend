@@ -36,8 +36,8 @@
                 
                     <div>
                         <b-form-group>
-                            <b-form-checkbox v-model="selectedTipo.tipo" @change="tipo" :aria-describedby="ariaDescribedby" name="some-radios" value="p" unchecked-value="e">Personal</b-form-checkbox>
-                            <b-form-checkbox v-model="selectedTipo.tipo" @change="tipo" :aria-describedby="ariaDescribedby" name="some-radios" value="e" unchecked-value="p">Estudiantes</b-form-checkbox>                         
+                            <b-form-checkbox v-model="selectedTipo.tipo" @change="tipo" :aria-describedby="ariaDescribedby" name="some-radios" value="p" unchecked-value="e"><span :class="[templates.text]">Personal</span></b-form-checkbox>
+                            <b-form-checkbox v-model="selectedTipo.tipo" @change="tipo" :aria-describedby="ariaDescribedby" name="some-radios" value="e" unchecked-value="p"><span :class="[templates.text]">Estudiantes</span></b-form-checkbox>                         
                         </b-form-group>
                     </div>
                 </Form>
@@ -54,7 +54,7 @@
                         <div class="input-group mt-4 col-md-8">
                             <input type="text" v-model="filtroImagesP.text" class="form-control form-control-sm" placeholder="Buscar">
                             <div class="input-group-append">
-                                <button @click="buscar" class="btn btn-outline-primary btn-sm" type="button">Buscar</button>
+                                <button @click="buscar" class="btn btn-primary btn-sm" type="button">Buscar</button>
                                 
                             </div>
                         </div>
@@ -241,6 +241,9 @@
             ...mapState("estudianteimages", [
                 "imagesEstudiante",
                 "filtroImagesE"
+            ]),
+            ...mapState("configuration", [
+                "templates"            
             ]),
             
         },

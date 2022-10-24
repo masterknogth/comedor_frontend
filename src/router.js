@@ -5,6 +5,7 @@ import Importar from "./components/Importar/Importar.vue";
 import ImportarFotos from "./components/Importar/ImportarFotos.vue";
 import Reportes from "./components/Reportes/Reportes.vue";
 import Graficas from "./components/Reportes/Graficas.vue";
+import Configuraciones from "./components/Configuraciones.vue";
 //import PageNotFound from "./components/PageNotFound.vue"
 
 
@@ -40,6 +41,12 @@ const routes = [
         name: "importar-fotos",
         component: ImportarFotos
         
+    },
+    {
+        path: "/configuraciones",
+        name: "configuraciones",
+        component:Configuraciones
+
     }
     /*{   path: "/:catchAll(.*)",
         name:"PageNotFound",

@@ -7,8 +7,8 @@
                     <input type="date"  v-model="filtro.fecha" class="form-control form-control-sm" >
                     
                     <div class="input-group-append">
-                        <button @click="limpiar" class="btn btn-outline-primary btn-sm" type="button">limpiar</button>
-                        <button @click="buscar" class="btn btn-outline-primary btn-sm" type="button">Buscar</button>
+                        <button @click="limpiar" class="btn btn-secondary btn-sm" type="button">limpiar</button>
+                        <button @click="buscar" class="btn btn-primary btn-sm" type="button">Buscar</button>
                     </div>
                 </div>
             </div>
@@ -19,15 +19,18 @@
             <div class="col-md-3">
             </div>
             <div class="col-md-6">
+                <b-card>
                 <!--<DoughnutChart :chartData="testData" />-->
                 <BarChart :chartData="testData" />
+                
+                </b-card>
             </div>          
             <div class="col-md-3">
             </div>
         </div>
         <br/>
         <div class="row" >
-            <label class="text-center">Total de Usuarios: {{total}}</label>
+            <label class="text-center" :class="[templates.text]"><strong>Total de Usuarios: {{total}}</strong></label>
         </div>
     </div>
 </template>
@@ -77,6 +80,9 @@
                 "filtro",
                 "grafica"   
             ]),
+            ...mapState("configuration", [
+                "templates"    
+            ])
             
         }, 
         methods:{
@@ -97,9 +103,17 @@
                             backgroundColor: ['#77CEFF', '#0079AF', '#123E6B', '#97B0C4', '#A5C8ED'],
                             borderWidth: 1,
                             pointBorderColor: '#249EBF',
-                        },
+                          
+                          
+                        }                    
                     ],
-                };
+                    chartOptions: {
+                        responsive: true
+                    }
+                   
+                }
+
+               
                 let total = 0
                 for(let i of this.grafica){
                     total+=i;

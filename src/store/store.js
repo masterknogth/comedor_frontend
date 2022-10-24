@@ -8,6 +8,7 @@ import estudiantes from '../services/estudiante';
 import reportes from '../services/reportes';
 import personalimages from '../services/personalimages';
 import estudianteimages from '../services/estudianteimages';
+import configuration from '../services/configuration';
 
 
 
@@ -22,6 +23,7 @@ export default createStore({
       estudiantes:estudiantes,
       reportes:reportes,
       personalimages:personalimages,
-      estudianteimages:estudianteimages
+      estudianteimages:estudianteimages,
+      configuration:configuration
     }
 })

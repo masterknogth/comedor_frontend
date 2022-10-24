@@ -5,18 +5,18 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
         
-                <b-card bg-variant="dar">  
+               <!-- <b-card bg-variant="dar">  -->
                     
                     <div class="col-lg-12">
                         <div class="alert alert-danger" v-if="errorAuth">
                             Email o Password Equivocado
                         </div>
                         
-                        <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors }">    
+                        <Form class="formulario" @submit="onSubmit" :validation-schema="schema" v-slot="{ errors }">    
                             <div class="row">
                                 <div class="col-lg-12">                             
                                     <div class="row justify-content-left">
-                                        <label class="col-2 text-nowrap" :class="[active? nsText: '']">Usuario</label>
+                                        <label class="col-2 text-nowrap" :class="[templates.text]">Usuario</label>
                                         
                                     </div>
                                 </div>
@@ -33,7 +33,7 @@
                             <div class="row">
                                 <div class="col-lg-12">                             
                                     <div class="row justify-content-left">
-                                        <label class="col-2 text-nowrap" :class="[active? nsText: '']">Contraseña</label>                               
+                                        <label class="col-2 text-nowrap" :class="[templates.text]" >Contraseña</label>                               
                                     </div>
                                 </div>
                                 <b-input-group size="sm">
@@ -72,7 +72,7 @@
                             
                         </Form>
                     </div> 
-                </b-card>
+                <!--</b-card>-->
             </div>
             <div class="col-md-4"></div>
         </div>   
@@ -142,9 +142,7 @@
             "detectLogout"
         ]),
         ...mapState("configuration", [
-            "active",
-            "bgDark",
-            "nsText"
+            "templates"       
         ])
     },
 
@@ -152,6 +150,7 @@
         ...mapMutations("loader", [
             "load",
         ]),
+        
         ...mapMutations("auth", [
             "resetSelectedAuth",
             "resetErrors"

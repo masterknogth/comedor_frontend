@@ -1,6 +1,6 @@
 <template>
    
-    <nav v-if="selectedAuth.loged" class="navbar navbar-expand-lg bg-light" style="position:fixed;width:100%;left:0px;top:0px;z-index:999">
+    <nav v-if="selectedAuth.loged" class="navbar navbar-expand-lg " :class="[templates.bg]" style="position:fixed;width:100%;left:0px;top:0px;z-index:999">
         <div class="container-fluid">
             <router-link class="navbar-brand" to="/">
                   <img class="image-nav" src="assets/images/unetrans.jpg" >
@@ -13,33 +13,38 @@
                     
                     
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" :class="[templates.text]" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Opciones
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu " :class="[templates.bg]">
                             <li>
                                 <li>
-                                    <a class="dropdown-item" >
+                                    <a class="dropdown-item" :class="[templates.text]">
                                         Usuario: {{selectedAuth.user}}
                                     </a>
                                 </li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li ><router-link to="/" class="dropdown-item" href="#">inicio</router-link></li>
-                            <li v-if="selectedAuth.role == '1'"><router-link to="/reportes" class="dropdown-item" href="#">Reportes</router-link></li>
-                            <li v-if="selectedAuth.role == '1'"><router-link to="/graficas" class="dropdown-item" href="#">Graficas</router-link></li>
+                            <li ><router-link to="/" class="dropdown-item" :class="[templates.text]">inicio</router-link></li>
+                            <li v-if="selectedAuth.role == '1'"><router-link to="/reportes" class="dropdown-item" :class="[templates.text]">Reportes</router-link></li>
+                            <li v-if="selectedAuth.role == '1'"><router-link to="/graficas" class="dropdown-item" :class="[templates.text]">Graficas</router-link></li>
                             <li v-if="selectedAuth.role == '1'">
-                                <router-link to="/importar" class="dropdown-item" href="#">
+                                <router-link to="/importar" class="dropdown-item" :class="[templates.text]">
                                 Importar
                                 </router-link>
                             </li>
                             <li v-if="selectedAuth.role == '1'">
-                                <router-link to="/importar-fotos" class="dropdown-item" href="#">
+                                <router-link to="/importar-fotos" class="dropdown-item" :class="[templates.text]">
                                 Importar Fotos
                                 </router-link>
                             </li>
+                            <li v-if="selectedAuth.role == '1'">
+                                <router-link to="/configuraciones" class="dropdown-item" :class="[templates.text]">
+                                Configuraciones
+                                </router-link>
+                            </li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#" @click="logOut">Cerrar Sesión</a></li>
+                            <li><a class="dropdown-item" :class="[templates.text]" @click="logOut">Cerrar Sesión</a></li>
                         </ul>
                     </li>
                 
@@ -84,10 +89,8 @@
                 "detectLogout"
             ]),
             ...mapState("configuration", [
-                "active",
-                "bgDark",
-                "nsText"
-            ])
+                "templates"    
+            ]),
         },
 
         methods: {

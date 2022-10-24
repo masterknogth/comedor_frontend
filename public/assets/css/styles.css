@@ -1,7 +1,16 @@
 body{
    background-color: #EEEEF8 !important;
 }
+.formulario{
+    border:0px solid #fff; 
+    padding:30px 40px;
+    /*margin-top:20vh;*/
+    -webkit-box-shadow: -1px 4px 25px 11px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 4px 25px 11px rgba(0,0,0,0.75);
+    box-shadow: -1px 4px 25px 11px rgba(0,0,0,0.75);
 
+
+}
 .ns-show-pass{
     position: relative;
     right: 55px;

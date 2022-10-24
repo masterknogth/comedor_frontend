@@ -30,7 +30,9 @@ export default {
       }
     },
 
-  created() {
+  async created() {
+      
+      
       //expira sesion despues de 6horas
       if(localStorage.getItem('inicio') != null){
         const milisegundos = new Date();
@@ -60,6 +62,7 @@ export default {
       loged:localStorage.getItem('loged'),
       user:localStorage.getItem('user'),
     })
+    await this.obtenerTemplate();
     
   },
 
@@ -73,6 +76,9 @@ export default {
   methods: {
       ...mapMutations("auth", [
         "setSelectedAuth"
+      ]),
+      ...mapActions("configuration", [
+        "obtenerTemplate"
       ]),
     
 

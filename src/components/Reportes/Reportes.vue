@@ -16,8 +16,9 @@
                         <option value="">Todos</option>
                     </select>
                     <div class="input-group-append">
-                        <button @click="limpiar" class="btn btn-outline-primary btn-sm" type="button">limpiar</button>
-                        <button @click="listarReportes" class="btn btn-outline-primary btn-sm" type="button">Buscar</button>
+                        <!--<button  class="btn btn-outline-primary" ></button>-->
+                        <button @click="limpiar" class="btn btn-primary btn-sm" type="button">limpiar</button>
+                        <button @click="listarReportes" class="btn btn-secondary btn-sm" type="button">Buscar</button>
                     </div>
                 </div>
             </div>
@@ -45,37 +46,37 @@
             
         </div>
         <br/>
-        <b-table-simple responsive striped hover >
+        <b-table-simple responsive striped hover :class="[templates.bg]">
             <b-thead>
                 <tr>     
-                    <b-th >#</b-th>
-                    <b-th >Cedula</b-th>
-                    <b-th >Nombres</b-th>               
-                    <b-th >Apellidos</b-th>
-                    <b-th >Departamento</b-th>  
-                    <b-th >Tipo</b-th>
-                    <b-th >Usuario</b-th>
-                    <b-th >Fecha</b-th>
-                    <b-th >Hora</b-th>                       
+                    <b-th :class="[templates.text]">#</b-th>
+                    <b-th :class="[templates.text]">Cedula</b-th>
+                    <b-th :class="[templates.text]">Nombres</b-th>               
+                    <b-th :class="[templates.text]">Apellidos</b-th>
+                    <b-th :class="[templates.text]">Departamento</b-th>  
+                    <b-th :class="[templates.text]">Tipo</b-th>
+                    <b-th :class="[templates.text]">Usuario</b-th>
+                    <b-th :class="[templates.text]">Fecha</b-th>
+                    <b-th :class="[templates.text]">Hora</b-th>                       
                 </tr>
             </b-thead>
             <b-tbody>
                 <b-tr v-for="(reporte, index ) in reportes.data" :key="reporte.id">    
-                    <b-td>{{index+1}}</b-td>   
-                    <b-td>{{reporte.cedula}}</b-td>              
-                    <b-td>{{reporte.nombres}}</b-td>  
-                    <b-td>{{reporte.apellidos}}</b-td>  
-                    <b-td>{{reporte.departament?reporte.departament.name:''}}</b-td>
-                    <b-td>{{reporte.tipo}}</b-td> 
-                    <b-td>{{reporte.user?reporte.user.user:''}}</b-td> 
-                    <b-td>{{reporte.fecha}}</b-td> 
-                    <b-td>{{reporte.hora}}</b-td>  
+                    <b-td :class="[templates.text]">{{index+1}}</b-td>   
+                    <b-td :class="[templates.text]">{{reporte.cedula}}</b-td>              
+                    <b-td :class="[templates.text]">{{reporte.nombres}}</b-td>  
+                    <b-td :class="[templates.text]">{{reporte.apellidos}}</b-td>  
+                    <b-td :class="[templates.text]">{{reporte.departament?reporte.departament.name:''}}</b-td>
+                    <b-td :class="[templates.text]">{{reporte.tipo}}</b-td> 
+                    <b-td :class="[templates.text]">{{reporte.user?reporte.user.user:''}}</b-td> 
+                    <b-td :class="[templates.text]">{{reporte.fecha}}</b-td> 
+                    <b-td :class="[templates.text]">{{reporte.hora}}</b-td>  
                 </b-tr>    
             </b-tbody>
             
         </b-table-simple> 
              
-        <p v-if="!reportes.data" class="text-center">No hay información para mostrar</p>
+        <p v-if="!reportes.data" class="text-center" :class="[templates.text]">No hay información para mostrar</p>
                
     
     </div>
@@ -116,7 +117,10 @@ export default {
         ...mapState("reportes", [
             "reportes",
             "filtro"   
-        ])
+        ]),
+        ...mapState("configuration", [
+            "templates"
+        ]),
            
     },
     methods:{
