@@ -14,23 +14,23 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-striped " >
+                    <table class="table table-striped " :class="[templates.bg]">
                         <thead>
                             <tr>     
-                                <th >Cedula</th>               
-                                <th >Nombres</th>
-                                <th >Apellidos</th>
-                                <th >Departamento</th>
-                                <th >Tipo</th>                         
+                                <th :class="[templates.text]">Cedula</th>               
+                                <th :class="[templates.text]">Nombres</th>
+                                <th :class="[templates.text]">Apellidos</th>
+                                <th :class="[templates.text]">Departamento</th>
+                                <th :class="[templates.text]">Tipo</th>                         
                             </tr>
                         </thead>
                         <tbody>
                             <tr>     
-                                <td>{{data.cedula}}</td>              
-                                <td>{{data.nombres}}</td>
-                                <td>{{data.apellidos}}</td>
-                                <td>{{data.departament?data.departament.name:''}}</td>
-                                <td>{{data.tipo}}</td>
+                                <td :class="[templates.text]">{{data.cedula}}</td>              
+                                <td :class="[templates.text]">{{data.nombres}}</td>
+                                <td :class="[templates.text]">{{data.apellidos}}</td>
+                                <td :class="[templates.text]">{{data.departament?data.departament.name:''}}</td>
+                                <td :class="[templates.text]">{{data.tipo}}</td>
                             </tr>    
                         </tbody>
                     </table>
@@ -78,6 +78,9 @@
             ...mapState("asistencia", [
                 "send",
                 "selectedContador"
+            ]),
+            ...mapState("configuration", [
+                "templates"
             ]),
 
            

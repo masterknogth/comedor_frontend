@@ -13,20 +13,14 @@
                                 <div class="col-lg-12">
                                     <div class="row">
                                         <div class="col-lg-12 d-flex">
-                                            <Field type="text" id="aa" ref="aa" name="user" v-model="selectedCodigo.codigo" rules="required"  class="form-control form-control-sm"  />		
+                                            <Field type="text" id="codigo" autofocus name="user" v-model="selectedCodigo.codigo" rules="required"  class="form-control form-control-sm"  />		
                                         </div>     
                                     </div>                        
                                 </div>                                                             
                             </div>
                                                         
                             <br/>
-                            <!--<div class="row">
-                                <div >
-                                    <b-button type="submit" variant="primary" size="md">
-                                        Enviar                                   
-                                    </b-button>                               
-                                </div>                    
-                            </div>  -->                  
+                                           
                         </Form>
                     </div> 
                 
@@ -175,22 +169,27 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             
-                           this.setSend(false);
-                           /*const elem = document.getElementById('aa');
-                           console.log(elem.value)*/
-                           this.$refs.aa.focus();
+                            this.setSend(false);
+                            setTimeout(() => {
+                                document.getElementById("codigo").focus();                           
+                            },500)
+                           
+                           
+                           
                         }                       
                     });
                 }else{
                     setTimeout(() => {
                         this.setSend(false);
-                       
+                        setTimeout(() => {
+                            document.getElementById("codigo").focus();                           
+                        },500)
                     },2000)
                 }
                 
                 
             }
-          
+           
         },
     };
 </script>

@@ -24,6 +24,21 @@ export async function importarFotosPersonal({ commit, state}, fotos) {
         
     })
 }
+/*export async function importarFotosPersonal({ commit, state}, fotos) {
+    
+    
+    await $http.post('/queue')
+    .then((response) => {
+        //Se reinicia el estado selectedAuth
+        //commit('resetSelectedAuth')
+        console.log(error.response.data)
+      
+    })
+    .catch((error) => {
+        console.log(error.response.data.error)
+        
+    })
+}*/
 
 
 export async function listarFotosPersonal({ commit, state}) {

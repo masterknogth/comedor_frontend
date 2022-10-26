@@ -115,7 +115,7 @@
                         <div class="input-group mt-4 col-md-8">
                             <input type="text" v-model="filtroImagesE.text" class="form-control form-control-sm" placeholder="Buscar">
                             <div class="input-group-append">
-                                <button @click="buscar" class="btn btn-outline-primary btn-sm" type="button">Buscar</button>
+                                <button @click="buscar" class="btn btn-primary btn-sm" type="button">Buscar</button>
                                 
                             </div>
                         </div>
